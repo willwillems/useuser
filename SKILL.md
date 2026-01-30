@@ -34,9 +34,14 @@ scripts/ask_text.sh "What is the database connection string?" "postgresql://loca
 **Parameters:**
 - `$1` - Question text (required)
 - `$2` - Default value (optional, defaults to empty)
-- `$3` - Timeout in seconds (optional, defaults to 300)
+- `$3` - Timeout in seconds (optional, defaults to 300). Use `0` or `none` for no timeout.
 
 **Returns:** The text entered by the user, or "CANCELLED" if cancelled, or "TIMEOUT" if timed out.
+
+**No timeout example:**
+```bash
+scripts/ask_text.sh "What is your preferred username?" "" 0
+```
 
 ### 2. Multiple Choice Dialog
 
@@ -63,7 +68,7 @@ scripts/ask_confirm.sh "Should I delete the old migration files?" "no" 300
 **Parameters:**
 - `$1` - Question text (required)
 - `$2` - Default button: "yes" or "no" (optional, defaults to "no")
-- `$3` - Timeout in seconds (optional, defaults to 300)
+- `$3` - Timeout in seconds (optional, defaults to 300). Use `0` or `none` for no timeout.
 
 **Returns:** "YES" or "NO", or "CANCELLED" if cancelled, or "TIMEOUT" if timed out.
 
@@ -77,7 +82,7 @@ scripts/show_info.sh "Migration completed successfully! 47 records updated." 300
 
 **Parameters:**
 - `$1` - Message to display (required)
-- `$2` - Timeout in seconds (optional, defaults to 300)
+- `$2` - Timeout in seconds (optional, defaults to 300). Use `0` or `none` for no timeout.
 
 **Returns:** "OK" when acknowledged, or "CANCELLED" if cancelled, or "TIMEOUT" if timed out.
 

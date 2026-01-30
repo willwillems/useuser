@@ -1,7 +1,8 @@
 #!/bin/bash
 # Ask a text input question via native macOS dialog
-# Usage: ask_text.sh "question" [default_value] [timeout_seconds]
+# Usage: ask_text.sh "question" [default_value] [timeout_seconds|0|none]
 # Returns: User's text input, "CANCELLED", "TIMEOUT", or "ERROR: message"
+# Note: Pass 0 or "none" for timeout to wait indefinitely
 
 set -e
 
@@ -22,7 +23,20 @@ escape_for_applescript() {
 ESCAPED_QUESTION=$(escape_for_applescript "$QUESTION")
 ESCAPED_DEFAULT=$(escape_for_applescript "$DEFAULT_VALUE")
 
-SCRIPT="
+# Check if timeout should be disabled
+if [ "$TIMEOUT" = "0" ] || [ "$TIMEOUT" = "none" ] || [ "$TIMEOUT" = "None" ]; then
+    # No timeout - dialog stays open indefinitely
+    SCRIPT="
+try
+    set dialogResult to display dialog \"$ESCAPED_QUESTION\" default answer \"$ESCAPED_DEFAULT\"
+    return text returned of dialogResult
+on error number -128
+    return \"CANCELLED\"
+end try
+"
+else
+    # With timeout
+    SCRIPT="
 try
     set dialogResult to display dialog \"$ESCAPED_QUESTION\" default answer \"$ESCAPED_DEFAULT\" giving up after $TIMEOUT
     if gave up of dialogResult then
@@ -34,6 +48,7 @@ on error number -128
     return \"CANCELLED\"
 end try
 "
+fi
 
 result=$(osascript -e "$SCRIPT" 2>&1) || {
     echo "ERROR: $result"
