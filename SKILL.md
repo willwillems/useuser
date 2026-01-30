@@ -1,15 +1,14 @@
 ---
-name: ping-principal
+name: useuser
 description: Ask humans questions via native macOS dialogs and notifications. Use when you need clarification, confirmation, or direct input from the user through system-level dialogs rather than chat. Supports text input, multiple choice, yes/no confirmation, information display, and system notifications.
 license: MIT
 compatibility: macOS only (requires AppleScript via osascript)
 metadata:
   author: willwillems
   version: "1.0.0"
-  original: https://github.com/willwillems/ping-principal-mcp
 ---
 
-# Ping Principal
+# Useuser
 
 This skill enables you to ask humans questions through native macOS system dialogs. Use this when you need direct user input, confirmation before taking actions, or want to display important information that requires acknowledgment.
 
@@ -96,7 +95,7 @@ scripts/notify.sh "Build completed successfully" "Development Server" "Ready for
 
 **Parameters:**
 - `$1` - Notification message (required)
-- `$2` - Title (optional, defaults to "Ping Principal")
+- `$2` - Title (optional, defaults to "Useuser")
 - `$3` - Subtitle (optional)
 - `$4` - Play sound: "yes" or "no" (optional, defaults to "no")
 

@@ -6,7 +6,7 @@
 set -e
 
 MESSAGE="${1:-}"
-TITLE="${2:-Ping Principal}"
+TITLE="${2:-Useuser}"
 SUBTITLE="${3:-}"
 SOUND="${4:-no}"
 

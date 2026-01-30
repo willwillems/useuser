@@ -1,6 +1,6 @@
-# Ping Principal (Agent Skill)
+# Useuser (Agent Skill)
 
-An Agent Skill that enables AI agents to ask humans questions through native macOS dialogs. This is a skill-based reimplementation of [ping-principal-mcp](https://github.com/willwillems/ping-principal-mcp).
+An Agent Skill that enables AI agents to ask humans questions through native macOS dialogs.
 
 ## What is this?
 
@@ -71,17 +71,6 @@ See [SKILL.md](./SKILL.md) for complete documentation including:
 - Usage examples
 - Error handling patterns
 - Best practices
-
-## Original MCP Version
-
-This skill is based on [ping-principal-mcp](https://github.com/willwillems/ping-principal-mcp), which implements the same functionality as an MCP server. Use the MCP version if you need:
-- Real-time tool integration via MCP protocol
-- Compatibility with MCP-only clients
-
-Use this skill version if you want:
-- Simpler installation via `npx skills add`
-- No background server process
-- Compatibility with skills-enabled agents
 
 ## License
 
